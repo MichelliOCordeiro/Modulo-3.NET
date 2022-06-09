@@ -26,7 +26,6 @@ function Home() {
 
     return (
         <>
-        <Navbar/>    
             <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
                 <Grid alignItems="center" item xs={6}>
                     <Box paddingX={20} alignItems="center">
@@ -37,7 +36,7 @@ function Home() {
                         <Box marginRight={1}>
                             <ModalPostagem />
                         </Box>
-                        <Link to="/postagens" className ="text-decorator-none">
+                        <Link to="/postagens" className="text-decorator-none">
                             <Button variant="outlined" className='botao'>Ver Postagens</Button>
                         </Link>
                     </Box>

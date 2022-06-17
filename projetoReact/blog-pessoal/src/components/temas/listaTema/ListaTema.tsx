@@ -17,14 +17,6 @@ function ListaTema() {
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
       );
-    
-    useEffect(() => {
-        if (token == '') {
-            alert("Você precisa estar logado")
-            navigate("/login")
-        }
-    }, [token])
-
 
     async function getTema() {
         await busca("/api/Temas", setTemas, {
@@ -33,7 +25,6 @@ function ListaTema() {
             }
         })
     }
-
 
     useEffect(() => {
         getTema()

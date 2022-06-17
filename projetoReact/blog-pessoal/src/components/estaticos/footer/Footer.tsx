@@ -3,19 +3,19 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import GitHubIcon from '@material-ui/icons/GitHub';
-import { Typography, Box, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@material-ui/core'
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { Box } from "@mui/material";
+import useLocalStorage from 'react-use-localstorage';
 
 function Footer() {
 
-    const token = useSelector<TokenState, TokenState["tokens"]>(
-        (state) => state.tokens
-    );
+    const [token, setToken] = useLocalStorage('token');
 
     var footerComponent;
 
-    if (token != "") {
+    if (token !== '') {
         footerComponent = <Grid container direction="row" justifyContent="center" alignItems="center">
             <Grid alignItems="center" item xs={12}>
                 <Box style={{ backgroundColor: "#3F51B5", height: "90px" }}>

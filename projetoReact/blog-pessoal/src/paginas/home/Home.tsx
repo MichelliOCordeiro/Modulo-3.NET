@@ -8,21 +8,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../store/tokens/tokensReducer";
 import Navbar from "../../components/estaticos/navbar/Navbar";
+import useLocalStorage from "react-use-localstorage";
 
 function Home() {
 
     let navigate = useNavigate();
-    const token = useSelector<TokenState, TokenState["tokens"]>(
-        (state) => state.tokens
-    );
-
+    const [token, setToken] = useLocalStorage('token');
+    
     useEffect(() => {
-        if (token == "") {
-            alert("Você precisa estar logado para acessar esta página!");
-            navigate('/login');
+        if (token === '') {
+          navigate('/login');
+          alert("Você precisa estar logado");
         }
-
-    }, [token]);
+      }, [token, navigate]);
 
     return (
         <>

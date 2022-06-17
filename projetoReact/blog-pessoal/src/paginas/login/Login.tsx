@@ -13,9 +13,9 @@ function Login() {
 
     let navigate = useNavigate();
     const dispatch = useDispatch();
-    const [token, setToken] = useState('');
+    const [token, setToken] = useLocalStorage('token');
     const [idCriador, setIdCriador] = useLocalStorage('id');
-
+    
     const [usuario, setUsuario] = useState<Usuario>(
         {
             id: 0,
@@ -26,6 +26,7 @@ function Login() {
             tipo: "NORMAL"
         }
     );
+
 
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
 
@@ -40,21 +41,12 @@ function Login() {
         
         try {
             await login(`/api/Usuarios/logar`, usuario, setToken, setIdCriador);
-
             alert('Usuário logado com sucesso!');
+            navigate('/home')
         } catch (error) {
             alert('Dados do usuário inconsistentes. Erro ao logar!');
         }
     }
-
-    useEffect(() => {
-
-        if(token !== '') {
-            dispatch(addToken(token))
-            navigate('/home');
-        }
-
-    }, [token, navigate]);
 
     return (
         <>

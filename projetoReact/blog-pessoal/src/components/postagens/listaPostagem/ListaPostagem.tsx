@@ -17,15 +17,6 @@ function ListaPostagem() {
         (state) => state.tokens
       );
 
-
-    useEffect(() => {
-        if (token == "") {
-            alert("Você precisa estar logado")
-            navigate("/login")
-
-        }
-    }, [token])
-
     async function getPost() {
         await busca("/api/Postagens", setPosts, {
             headers: {

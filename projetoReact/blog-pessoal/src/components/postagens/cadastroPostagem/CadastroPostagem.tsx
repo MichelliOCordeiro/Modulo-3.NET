@@ -19,14 +19,6 @@ function CadastroPostagem() {
         (state) => state.tokens
     );
 
-    useEffect(() => {
-        if (token == "") {
-            alert("Você precisa estar logado")
-            navigate("/login")
-
-        }
-    }, [token])
-
     const [tema, setTema] = useState<Tema>({
         id: 0,
         descricao: ''

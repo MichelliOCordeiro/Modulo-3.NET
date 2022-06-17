@@ -18,14 +18,6 @@ function DeletarTema() {
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
-    
-    useEffect(() => {
-        if (token == "") {
-            alert("Você precisa estar logado")
-            navigate("/login")
-
-        }
-    }, [token])
 
     useEffect(() => {
         if (id !== undefined) {

@@ -18,14 +18,6 @@ function DeletarPostagem() {
       );
 
     useEffect(() => {
-        if (token == "") {
-            alert("Você precisa estar logado")
-            navigate("/login")
-
-        }
-    }, [token])
-
-    useEffect(() => {
         if (id !== undefined) {
             findById(id)
         }

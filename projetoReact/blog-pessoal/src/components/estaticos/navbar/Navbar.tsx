@@ -12,14 +12,11 @@ import { addToken } from '../../../store/tokens/actions';
 function Navbar() {
     const [id, setId] = useLocalStorage('id');
     const dispatch = useDispatch();
-    const token = useSelector<TokenState, TokenState["tokens"]>(
-        (state) => state.tokens
-    );
-
+    const [token, setToken] = useLocalStorage('token');
     let navigate = useNavigate();
 
     function goLogout() {
-        dispatch(addToken(''));
+        setToken('')
         setId('')
         alert("Usuário deslogado")
         navigate('/login')
@@ -27,7 +24,7 @@ function Navbar() {
 
     var navbarComponent;
 
-    if (token != "") {
+    if (token !== "") {
         navbarComponent = <AppBar position="static">
             <Toolbar variant="dense">
                 <Box className='cursor'>
